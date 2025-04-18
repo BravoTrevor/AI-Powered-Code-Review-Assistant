@@ -1,0 +1,20 @@
+// app/api/review/route.ts
+export async function POST(req: Request) {
+  const { code, context } = await req.json();
+  
+  const prompt = `
+    Analyze this ${context.lang} code for:
+    1. Security vulnerabilities
+    2. Performance optimizations
+    3. Style consistency
+    Code: ${code}
+  `;
+
+  const response = await openai.chat.completions.create({
+    model: "gpt-4o",
+    messages: [{ role: "user", content: prompt }],
+    stream: true  // For real-time feedback
+  });
+  
+  return new StreamingTextResponse(response);
+}

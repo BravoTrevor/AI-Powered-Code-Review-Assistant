@@ -1,0 +1,14 @@
+ai-code-reviewer/
+├── app/
+│   ├── (review)/             # Next.js route group
+│   │   ├── page.tsx          # Interactive playground
+│   │   └── actions.ts        # Server Actions
+│   └── api/github/route.ts   # GitHub webhook handler
+├── lib/
+│   ├── ai/                   # LLM orchestration
+│   └── github/               # Octokit integration
+├── components/
+│   ├── CodeDiff.tsx          # Syntax-highlighted diffs
+│   └── AIAnnotation.tsx      # Inline comment bubbles
+└── .github/workflows/
+    └── review.yml            # PR automation
